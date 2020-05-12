@@ -14,7 +14,16 @@ namespace NewBookTracker.DAL.Entities
         private int numberOfPages;
         private Dictionary<DateTime, int> datePage;
         private bool isFinished;
-        private Dictionary<DateTime, int> datePage1;
+
+        public BookTrack(string t, int n, int pageFrom = 1)
+        {
+            title = t;
+            numberOfPages = n;
+            isFinished = false;
+            datePage = new Dictionary<DateTime, int>();
+            datePage.Add(DateTime.Now, pageFrom);
+        }
+
 
         public string Title
         {
@@ -67,7 +76,7 @@ namespace NewBookTracker.DAL.Entities
         {
             get => datePage; set
             {
-                datePage1 = value;
+                datePage = value;
                 RaisePropertyChanged();
             }
         }

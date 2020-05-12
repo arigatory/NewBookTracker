@@ -23,22 +23,9 @@ namespace NewBookTracker.DAL
             {
                 return new BookTrack[]
                 {
-                    new BookTrack()
-                    {
-                        Title="Test Book", CurrentPage=10,
-                        DateTimesAcsess = new List<DateTime>(),
-                        IsFinished=false,
-                        NumberOfPages=100,
-                        Started = DateTime.Today
-                    },
-                    new BookTrack()
-                    {
-                        Title="Another Book", CurrentPage=20,
-                        DateTimesAcsess = new List<DateTime>(),
-                        IsFinished=false,
-                        NumberOfPages=500,
-                        Started = DateTime.Now
-                    }
+                    new BookTrack("Основы алгебры. Часть 1. Кострикин",271),
+                    new BookTrack("WPF в .NET 4.5 c примерами на С#",1018,288)
+
                 };
             }
 
