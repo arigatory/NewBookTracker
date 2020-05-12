@@ -1,6 +1,8 @@
-﻿using NewBookTracker.Models;
+﻿using NewBookTracker.DAL.Entities;
+using NewBookTracker.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,18 +15,31 @@ namespace NewBookTracker.ViewModels
     {
         private readonly BookModel _model;
         private readonly ViewLauncher _viewLauncher;
+        public ObservableCollection<Book> Books { get; set; }
+        private Book _currentBook;
 
         public BookViewModel(BookModel bookModel, ViewLauncher viewLauncher)
         {
             _model = bookModel;
             _viewLauncher = viewLauncher;
-            _model.BookListChanged += (o,e) => ReloadBooks();
+            _model.BookListChanged += (o, e) => ReloadBooks();
             ReloadBooks();
         }
 
+
+        public Book CurrentBook
+        {
+            get { return _currentBook; }
+            set
+            {
+                _currentBook = value;
+                RaisePropertyChanged();
+                // DeleteCommand.RaiseCanExecuteChanged();
+            }
+        }
         private void ReloadBooks()
         {
-            throw new NotImplementedException();
+            Books = new ObservableCollection<Book>(_model.Books);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

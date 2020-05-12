@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace NewBookTracker.DAL.Entities
 {
-    public class BookTrack : INotifyPropertyChanged
+    public class Book : INotifyPropertyChanged
     {
         private string title;
         private int numberOfPages;
         private Dictionary<DateTime, int> datePage;
         private bool isFinished;
 
-        public BookTrack(string t, int n, int pageFrom = 1)
+        public Book(string t, int n, int pageFrom = 1)
         {
             title = t;
             numberOfPages = n;

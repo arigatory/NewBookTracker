@@ -17,30 +17,29 @@ namespace NewBookTracker.DAL
             _fileName = fileName;
         }
 
-        public BookTrack[] GetBooks()
+        public Book[] GetBooks()
         {
             if (!File.Exists(_fileName))
             {
-                return new BookTrack[]
+                return new Book[]
                 {
-                    new BookTrack("Основы алгебры. Часть 1. Кострикин",271),
-                    new BookTrack("WPF в .NET 4.5 c примерами на С#",1018,288)
-
+                    new Book("Основы алгебры. Часть 1. Кострикин",271),
+                    new Book("WPF в .NET 4.5 c примерами на С#",1018,288)
                 };
             }
 
             using (StreamReader sr = new StreamReader(_fileName))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(BookTrack[]));
-                return (BookTrack[])serializer.Deserialize(sr);
+                XmlSerializer serializer = new XmlSerializer(typeof(Book[]));
+                return (Book[])serializer.Deserialize(sr);
             }
         }
 
-        public void SaveBooks(BookTrack[] books)
+        public void SaveBooks(Book[] books)
         {
             using (StreamWriter sw = new StreamWriter(_fileName))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(BookTrack[]));
+                XmlSerializer serializer = new XmlSerializer(typeof(Book[]));
                 serializer.Serialize(sw, books);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using NewBookTracker.DAL;
 using NewBookTracker.Models;
+using NewBookTracker.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,8 +24,8 @@ namespace NewBookTracker
                 return;
             }
 
-            // BookViewModel vm = new PersonViewModel(_model, this);
-            MainWindow mainWindow = new MainWindow(); // { DataContext = vm };
+            BookViewModel vm = new BookViewModel(_model, this);
+            MainWindow mainWindow = new MainWindow() { DataContext = vm };
             Application.Current.MainWindow = mainWindow;
             mainWindow.Show();
         }

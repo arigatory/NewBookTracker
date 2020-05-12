@@ -67,7 +67,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAL\BookProvider.cs" />
-    <Compile Include="DAL\Entities\BookTrack.cs" />
+    <Compile Include="DAL\Entities\Book.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
