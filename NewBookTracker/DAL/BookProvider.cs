@@ -17,13 +17,13 @@ namespace NewBookTracker.DAL
             _fileName = fileName;
         }
 
-        public Book[] GetBooks()
+        public BookTrack[] GetBooks()
         {
             if (!File.Exists(_fileName))
             {
-                return new Book[]
+                return new BookTrack[]
                 {
-                    new Book()
+                    new BookTrack()
                     {
                         Title="Test Book", CurrentPage=10,
                         DateTimesAcsess = new List<DateTime>(),
@@ -31,7 +31,7 @@ namespace NewBookTracker.DAL
                         NumberOfPages=100,
                         Started = DateTime.Today
                     },
-                    new Book()
+                    new BookTrack()
                     {
                         Title="Another Book", CurrentPage=20,
                         DateTimesAcsess = new List<DateTime>(),
@@ -44,16 +44,16 @@ namespace NewBookTracker.DAL
 
             using (StreamReader sr = new StreamReader(_fileName))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Book[]));
-                return (Book[])serializer.Deserialize(sr);
+                XmlSerializer serializer = new XmlSerializer(typeof(BookTrack[]));
+                return (BookTrack[])serializer.Deserialize(sr);
             }
         }
 
-        public void SaveBooks(Book[] books)
+        public void SaveBooks(BookTrack[] books)
         {
             using (StreamWriter sw = new StreamWriter(_fileName))
             {
-                XmlSerializer serializer = new XmlSerializer(typeof(Book[]));
+                XmlSerializer serializer = new XmlSerializer(typeof(BookTrack[]));
                 serializer.Serialize(sw, books);
             }
         }

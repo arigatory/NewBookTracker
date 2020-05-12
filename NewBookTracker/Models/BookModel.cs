@@ -11,7 +11,7 @@ namespace NewBookTracker.Models
     public class BookModel
     {
         private readonly BookProvider _bookProvider;
-        private Book[] Books;
+        private BookTrack[] Books;
         public event EventHandler BookListChanged;
 
 
@@ -26,7 +26,7 @@ namespace NewBookTracker.Models
             Books = _bookProvider.GetBooks();
         }
 
-        public void Save(Book[] books)
+        public void Save(BookTrack[] books)
         {
             _bookProvider.SaveBooks(books);
             Books = books;

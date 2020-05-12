@@ -8,26 +8,27 @@ using System.Threading.Tasks;
 
 namespace NewBookTracker.DAL.Entities
 {
-    public class Book : INotifyPropertyChanged
+    public class BookTrack : INotifyPropertyChanged
     {
         private string title;
-        private DateTime started;
         private int numberOfPages;
-        private List<DateTime> dateTimesAcsess;
-        private int currentPage;
+        private Dictionary<DateTime, int> datePage;
         private bool isFinished;
+        private Dictionary<DateTime, int> datePage1;
 
-        public string Title { get => title; set {
+        public string Title
+        {
+            get => title; set
+            {
                 title = value;
                 RaisePropertyChanged();
             }
         }
         public DateTime Started
         {
-            get => started; set
+            get
             {
-                started = value;
-                RaisePropertyChanged();
+                return datePage.Keys.Min();
             }
         }
         public int NumberOfPages
@@ -38,12 +39,19 @@ namespace NewBookTracker.DAL.Entities
                 RaisePropertyChanged();
             }
         }
-        public List<DateTime> DateTimesAcsess { get => dateTimesAcsess; set => dateTimesAcsess = value; }
         public int CurrentPage
         {
-            get => currentPage; set
+            get
             {
-                currentPage = value;
+                if (datePage == null)
+                {
+                    return 0;
+                }
+                return datePage[datePage.Keys.Max()];
+            }
+            set
+            {
+                datePage.Add(DateTime.Now, value);
                 RaisePropertyChanged();
             }
         }
@@ -55,6 +63,15 @@ namespace NewBookTracker.DAL.Entities
                 RaisePropertyChanged();
             }
         }
+        public Dictionary<DateTime, int> DatePage
+        {
+            get => datePage; set
+            {
+                datePage1 = value;
+                RaisePropertyChanged();
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)

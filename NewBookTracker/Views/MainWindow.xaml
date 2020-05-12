@@ -1,0 +1,109 @@
+﻿<Window x:Class="NewBookTracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewBookTracker"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Width" Value="50"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Exit"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Add"/>
+                <MenuItem Header="Clear"/>
+                <MenuItem Header="Delete"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Title"/>
+                <TextBox   Grid.Column="1" Text="Title"/>
+                <TextBlock Grid.Column="2" Text="From"/>
+                <TextBox Grid.Column="3" MinWidth="50" />
+                <TextBlock Grid.Column="4" Text="Total"/>
+                <TextBox Grid.Column="5"  MinWidth="50" />
+                <Button Grid.Column="6" Content="Add"/>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <ListView Margin="5,50,5,5">
+                <ListViewItem>Test</ListViewItem>
+            </ListView>
+            <Grid Grid.Column="1" Margin="5,50,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ProgressBar Grid.Row="0" Height="20" Value="30"/>
+                    <ListView Grid.Row="1" IsEnabled="False">
+                        <ListViewItem>Info</ListViewItem>
+                        <ListViewItem>Info</ListViewItem>
+                        <ListViewItem>Info</ListViewItem>
+
+                    </ListView>
+                </Grid>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Content="Clear"/>
+                    <Button Content="Delete"/>
+                    <Button Content="Save"/>
+
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <ProgressBar Grid.Row="3" Height="40" Margin="5" Value="30">
+           
+        </ProgressBar>
+
+        <TextBlock Grid.Row="4" Text="All books will be finished" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>
